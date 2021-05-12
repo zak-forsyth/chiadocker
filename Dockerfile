@@ -6,7 +6,9 @@ EXPOSE 8444
 ENV keys="generate"
 ENV harvester="false"
 ENV farmer="false"
+ENV plots-temp_dir="/plots_temp"
 ENV plots_dir="/plots"
+ENV config_dir="/root/.chia/"
 ENV farmer_address="null"
 ENV farmer_port="null"
 ENV testnet="false"
@@ -24,6 +26,7 @@ RUN git clone --branch main https://github.com/Chia-Network/chia-blockchain.git 
 
 WORKDIR /chia-blockchain
 RUN mkdir /plots
+RUN mkdir /plots_temp
 ADD ./entrypoint.sh entrypoint.sh
 
 ENTRYPOINT ["bash", "./entrypoint.sh"]
